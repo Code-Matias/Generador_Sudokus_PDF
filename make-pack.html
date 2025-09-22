@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generar Pack PDF – FALLTEM Mayores</title>
+  <meta name="description" content="PDF A4 de alta legibilidad para adultos mayores. Fuente grande, alto contraste.">
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
+</head>
+
+<body class="font-sans antialiased text-falltem-ink bg-falltem-limeBg">
+
+  <header class="bg-falltem-blueDark text-white">
+    <div class="max-w-4xl mx-auto px-6 py-6">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+        Generar Pack PDF (A4) – Adultos Mayores
+      </h1>
+      <p class="mt-1 text-white/85">
+        Sudokus de alta legibilidad: A4, fuente grande, alto contraste, con soluciones opcionales.
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-8">
+    <section class="bg-white rounded-falltem shadow-sm ring-1 ring-falltem-paleBlue/70 p-6 md:p-8">
+      <form class="grid md:grid-cols-2 gap-4" onsubmit="return false;">
+
+        <label class="block">
+          <span class="text-sm font-semibold text-falltem-blueDark">Tamaño</span>
+          <select id="inpSize"
+                  class="mt-1 w-full rounded-xl ring-1 ring-falltem-paleBlue px-3 py-2 focus:outline-none focus:ring-2 focus:ring-falltem-blue">
+            <option value="9" selected>9×9 (recomendado)</option>
+            <option value="6" disabled>6×6 (próximamente)</option>
+            <option value="4" disabled>4×4 (próximamente)</option>
+          </select>
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-falltem-blueDark">Cantidad</span>
+          <input id="inpCount" type="number" min="1" max="30" value="6"
+                 class="mt-1 w-full rounded-xl ring-1 ring-falltem-paleBlue px-3 py-2 focus:outline-none focus:ring-2 focus:ring-falltem-blue" />
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-falltem-blueDark">Dificultad</span>
+          <select id="inpDiff"
+                  class="mt-1 w-full rounded-xl ring-1 ring-falltem-paleBlue px-3 py-2 focus:outline-none focus:ring-2 focus:ring-falltem-blue">
+            <option value="easy" selected>Fácil (adultos mayores)</option>
+            <option value="medium">Media</option>
+            <option value="hard">Difícil</option>
+          </select>
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-falltem-blueDark">Semilla (opcional)</span>
+          <input id="inpSeed" type="text" placeholder="ej: falltem-001"
+                 class="mt-1 w-full rounded-xl ring-1 ring-falltem-paleBlue px-3 py-2 focus:outline-none focus:ring-2 focus:ring-falltem-blue" />
+        </label>
+
+        <label class="block md:col-span-2 flex items-center gap-2 mt-2 select-none">
+          <input id="chkSolutions" type="checkbox" class="h-5 w-5 accent-falltem-green" checked />
+          <span class="text-falltem-greenDark font-medium">Incluir soluciones al final</span>
+        </label>
+
+        <div class="md:col-span-2 mt-2">
+          <button id="btnBuild"
+                  class="w-full rounded-falltem px-6 py-3 bg-falltem-green hover:bg-falltem-greenDark text-white font-bold tracking-wide transition">
+            Generar y descargar PDF
+          </button>
+        </div>
+      </form>
+
+      <p class="mt-4 text-sm text-falltem-blueDark/75">
+        * Por ahora el generador produce 9×9. 6×6 y 4×4 quedarán para una siguiente iteración.
+      </p>
+    </section>
+  </main>
+
+  <footer class="max-w-4xl mx-auto px-6 pb-10 text-sm text-falltem-blueDark/75">
+    Fundación FALLTEM · Material imprimible · uso educativo
+  </footer>
+
+  <!-- Librerías y scripts (orden importa) -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="js/rng.js"></script>
+  <script src="js/sudoku-core.js"></script>
+  <script src="js/pdf-mayores.js"></script>
+</body>
+</html>
